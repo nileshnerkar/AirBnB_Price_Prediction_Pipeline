@@ -1,0 +1,106 @@
+<html>
+    <head>
+        <title>
+            Airbnb Price Prediction
+        </title>
+    </head>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <body>
+        <br><br><br><br>
+        <div class="container border rounded" >
+            <form action="{{url_for('predict')}}" method="POST">
+                <br><br>
+                <div class="form-group row">
+                    <label for="neighbourhood_group_cleansed" class="col-sm-2 col-form-label">Neighbourhood:</label>
+                    <div class="col-sm-6">
+                        <select class="form-control" id="neighbourhood_group_cleansed" name="neighbourhood_group_cleansed">
+                            {% for ele in neighbours %}
+                                <option value="{{ele}}">{{ele}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="bedrooms" class="col-sm-2 col-form-label">Bedroom Count:</label>
+                    <div class="col-sm-6">
+                        <input type="number" class="form-control" id="bedrooms" name="bedrooms" placeholder="Enter number of bedrooms">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="beds" class="col-sm-2 col-form-label">Bed Count:</label>
+                    <div class="col-sm-6">
+                            <input type="number" class="form-control" id="beds" name="beds" placeholder="Enter Number of beds">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="bathrooms" class="col-sm-2 col-form-label">Bathrooms Count:</label>
+                    <div class="col-sm-6">
+                        <input type="number" class="form-control" id="bathrooms" name="bathrooms" placeholder="Enter number of bathrooms">
+                    </div>
+                </div>        
+                <div class="form-group row">
+                        <label for="accommodates" class="col-sm-2 col-form-label">Accommodations:</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="accommodates" name="accommodates" placeholder="Enter number of accommodations">
+                        </div>
+                </div>
+                <div class="form-group row">
+                        <label for="cleaning_fee" class="col-sm-2 col-form-label">Cleaning Fee:</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control" id="cleaning_fee" name="cleaning_fee" placeholder="Enter cleaning fee charged">
+                        </div>
+                </div>    
+                <div class="form-group row">
+                        <label for="property_type" class="col-sm-2 col-form-label">Property Type:</label>
+                        <div class="col-sm-6">
+                                <select class="form-control" id="property_type" name="property_type">
+                                    {% for ele in property_types %}
+                                    <option value="{{ele}}">{{ele}}</option>
+                                    {% endfor %}
+                                </select>
+                        </div>
+                </div>
+                <div class="form-group row">
+                        <label for="cancellation_policy" class="col-sm-2 col-form-label">Cancellation Policy:</label>
+                        <div class="col-sm-6">
+                                <select class="form-control" id="cancellation_policy" name="cancellation_policy">
+                                    {% for ele in cancellation_policies %}
+                                    <option value="{{ele}}">{{ele}}</option>
+                                    {% endfor %}
+                                </select>
+                        </div>
+                </div>
+
+                <div class="form-group row">
+                        <label for="bed_type" class="col-sm-2 col-form-label">Bed Type:</label>
+                        <div class="col-sm-6">
+                                <select class="form-control" id="bed_type" name="bed_type">
+                                    {% for ele in bed_types %}
+                                    <option value="{{ele}}">{{ele}}</option>
+                                    {% endfor %}
+                                </select>
+                        </div>
+                </div>
+
+                <div class="form-group row">
+                        <label for="guests_included" class="col-sm-2 col-form-label">Guests Count:</label>
+                        <div class="col-sm-6">
+                                <input type="number" class="form-control" id="guests_included" name="guests_included" placeholder="Enter Number of guests">
+                        </div>
+                </div>
+
+                <div class="form-group row">
+                <div class="col-sm-6">
+                    <button type="submit" class="btn btn-primary">Predict</button>
+                </div>
+                </div>
+            </form>
+        </div><!--Close Container Grid-->
+    </body>
+</html>

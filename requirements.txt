@@ -1,0 +1,4 @@
+requests
+patool
+beautifulsoup4
+pytz
